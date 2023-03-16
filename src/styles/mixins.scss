@@ -1,3 +1,13 @@
+@mixin f_align($align: center) {
+  display: flex;
+  align-items: $align;
+}
+
+@mixin f_justify($justify: center) {
+  display: flex;
+  justify-content: $justify;
+}
+
 /** 水平方向居中对齐 */
 @mixin fhc {
   display: flex;

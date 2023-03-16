@@ -8,21 +8,41 @@
     <br />
     <input type="text" v-focus placeholder="指令测试" />
     <br />
-    <div class="css-var" ref="el">
-      <button>测试主题色</button>
+    <div class="theme-box" ref="el">
+      <div class="text">主题测试区域</div>
     </div>
     <br />
-    <button @click="switchColor">切换主题</button>
+    <select placeholder="切换主题" @change="(evt) => changeTheme(evt)">
+      <option v-for="theme in themeOptions" :key="theme.value" :value="theme.value">
+        {{ theme.label }}
+      </option>
+    </select>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useSwitchTheme } from '@/hooks';
+import { ThemeUnion, useSwitchTheme } from '@/hooks';
 import { useStore } from '@/store';
 
+interface ITheme {
+  value: ThemeUnion;
+  label: string;
+}
+
 const { user } = useStore();
+// 主题测试
+const themeOptions: ITheme[] = [
+  { label: '默认主题', value: 'defaultTheme' },
+  {
+    label: '自定义主题',
+    value: 'customTheme',
+  },
+];
 const el = ref(null);
-const { switchColor } = useSwitchTheme(el, { '--el-color-primary': '#f60' });
+const { switchColor } = useSwitchTheme(el);
+const changeTheme = (evt: Event) => {
+  switchColor((evt.target as any).value);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -33,12 +53,12 @@ const { switchColor } = useSwitchTheme(el, { '--el-color-primary': '#f60' });
     size: 20px;
     weight: 600;
   }
-}
-
-.css-var {
-  --el-color-primary: #409eff;
-  button {
-    background-color: var(--el-color-primary);
+  .theme-box {
+    @include wh(180px, 40px);
+    @include fvc;
+    border: 1px solid #ccc;
+    background-color: var(--sy-primary-bg-color);
+    color: var(--sy-primary-title-color);
   }
 }
 </style>
