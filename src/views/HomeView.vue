@@ -12,7 +12,7 @@
       <div class="text">主题测试区域</div>
     </div>
     <br />
-    <select placeholder="切换主题" @change="(evt) => changeTheme(evt)">
+    <select placeholder="切换主题" v-model="activeTheme" @change="(evt) => changeTheme(evt)">
       <option v-for="theme in themeOptions" :key="theme.value" :value="theme.value">
         {{ theme.label }}
       </option>
@@ -39,9 +39,10 @@ const themeOptions: ITheme[] = [
   },
 ];
 const el = ref(null);
-const { switchColor } = useSwitchTheme(el);
-const changeTheme = (evt: Event) => {
-  switchColor((evt.target as any).value);
+const activeTheme = ref<ThemeUnion>('defaultTheme');
+const { switchColor } = useSwitchTheme(el, activeTheme);
+const changeTheme = () => {
+  switchColor();
 };
 </script>
 
