@@ -1,12 +1,14 @@
 import Fetch from '@/servies/fetch';
 import localCache from '@/utils/localCache';
 
+const whiteApis = ['/user/login']; // 接口白名单
+
 export const useMyFeatch = new Fetch({
   baseUrl: process.env.VUE_APP_BASE_URL,
   options: {
-    beforeFetch({ options, cancel }) {
+    beforeFetch({ options, cancel, url }) {
       const token = localCache.getCache('token');
-      if (!token) {
+      if (!whiteApis.find((item) => url.includes(item)) && !token) {
         cancel();
       }
       options.headers = {
