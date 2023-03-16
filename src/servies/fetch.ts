@@ -21,13 +21,13 @@ class Fetch {
       fetchOptions,
     });
   }
-  get({ url, params = {} }: IFeatchParams, featOptions: UseFetchOptions = {}) {
+  get({ url, params = {} }: Omit<IFeatchParams, 'data'>, featOptions: UseFetchOptions = {}) {
     return this.instances(
       `${url}${objectToSearch(params) ? `?${objectToSearch(params)}` : ''}`,
       featOptions
     ).json();
   }
-  post({ url, data }: IFeatchParams, featOptions: UseFetchOptions = {}) {
+  post({ url, data }: Omit<IFeatchParams, 'params'>, featOptions: UseFetchOptions = {}) {
     return this.instances(url, featOptions).post(data).json();
   }
   put({ url, data }: IFeatchParams, featOptions: UseFetchOptions = {}) {
