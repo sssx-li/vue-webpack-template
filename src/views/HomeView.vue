@@ -1,5 +1,6 @@
 <template>
   <div class="home-container">
+    {{ userInfo.username }} <br />
     <icon-sy-logo style="width: 18px; height: 18px" />
     <br />
     <div>用户名: {{ user.userInfo.username }}</div>
@@ -21,8 +22,11 @@
 </template>
 
 <script setup lang="ts">
-import { ThemeUnion, useSwitchTheme } from '@/hooks';
+import { ThemeUnion, useLocalCache, useSwitchTheme } from '@/hooks';
+// import { ThemeUnion, useSwitchTheme, useLocalCache, useHandleApiRes } from '@/hooks';
 import { useStore } from '@/store';
+// import { Login, responseStatusCode } from '@/service/api';
+// import { ILoginRes } from '@/service/types';
 
 interface ITheme {
   value: ThemeUnion;
@@ -41,6 +45,30 @@ const themeOptions: ITheme[] = [
 const el = ref(null);
 const activeTheme = ref<ThemeUnion>('defaultTheme');
 const { switchColor } = useSwitchTheme(el, activeTheme);
+
+const { getCache, setCache } = useLocalCache();
+setCache('userInfo', {
+  username: 'sy',
+  avatar: '',
+});
+const userInfo = getCache('userInfo');
+// 接口调用示例1
+// Login({ password: 'admin123', username: 'sy' }).then((res) => {
+//   const { code, data } = res.data.value;
+//   if (code === responseStatusCode.success) {
+//     console.log('data', data);
+//   }
+// });
+// 接口调用示例2：使用useHandleApiRes
+// const submit = async () => {
+//   const { code, data, abort } = await useHandleApiRes<ILoginRes>(
+//     Login({ password: 'admin123', username: 'sy' })
+//   );
+//   abort(); // 取消请求
+//   if (code === responseStatusCode.success) {
+//     console.log('data', data);
+//   }
+// };
 </script>
 
 <style lang="scss" scoped>
