@@ -34,6 +34,14 @@ interface ITheme {
 }
 
 const { user } = useStore();
+
+const { getCache, setCache } = useLocalCache();
+setCache('userInfo', {
+  username: 'sy',
+  avatar: '',
+});
+const userInfo = getCache('userInfo');
+
 // 主题测试
 const themeOptions: ITheme[] = [
   { label: '默认主题', value: 'defaultTheme' },
@@ -43,15 +51,9 @@ const themeOptions: ITheme[] = [
   },
 ];
 const el = ref(null);
-const activeTheme = ref<ThemeUnion>('defaultTheme');
+const activeTheme = ref<ThemeUnion>(getCache('theme'));
 const { switchColor } = useSwitchTheme(el, activeTheme);
-
-const { getCache, setCache } = useLocalCache();
-setCache('userInfo', {
-  username: 'sy',
-  avatar: '',
-});
-const userInfo = getCache('userInfo');
+switchColor();
 // 接口调用示例1
 // Login({ password: 'admin123', username: 'sy' }).then((res) => {
 //   const { code, data } = res.data.value;
