@@ -13,16 +13,15 @@ module.exports = defineConfig({
   configureWebpack: {
     plugins: [
       AutoImport({
-        // dts: './typing/auto.import.d.ts',
-        dts: false,
-        imports: ['vue', 'vue-router'],
+        dts: './typing/auto.import.d.ts',
+        imports: ['vue', 'vue-router', 'pinia'],
         eslintrc: {
           enabled: false,
           filepath: './.eslintrc-auto-import.json',
         },
       }),
       AutoComponent({
-        dts: false,
+        dts: './typing/.auto.components.d.ts',
         resolvers: [
           IconsResolver({
             componentPrefix: 'icon',
