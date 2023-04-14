@@ -63,8 +63,10 @@ e.g.: git commit -m "docs: update README.md"
   <icon-clarity-accessibility-1-solid/>
 ```
 
-### Customize configuration
+### 分支管理
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
-# vue-webpack-template
-基于vue-cli，集成pinia、husky、@vueuse/core、vue3、typescript等前沿技术
+```base
+  main/master: 用于基础功能开发
+  element-template: 集成element-plus
+  *-scope: 用于cli工具模板生产
+```
