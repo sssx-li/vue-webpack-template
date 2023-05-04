@@ -22,11 +22,10 @@
 </template>
 
 <script setup lang="ts">
-import { ThemeUnion, useLocalCache, useSwitchTheme } from '@/hooks';
-// import { ThemeUnion, useSwitchTheme, useLocalCache, useHandleApiRes } from '@/hooks';
+import { ThemeUnion, useHandleApiRes, useLocalCache, useSwitchTheme } from '@/hooks';
+import { getUserInfo } from '@/service/api';
+import { IUserInfo } from '@/service/types/user';
 import { useStore } from '@/store';
-// import { Login, responseStatusCode } from '@/service/api';
-// import { ILoginRes } from '@/service/types';
 
 interface ITheme {
   value: ThemeUnion;
@@ -56,23 +55,20 @@ const { switchColor } = useSwitchTheme(el, activeTheme);
 nextTick(() => {
   switchColor();
 });
-// 接口调用示例1
-// Login({ password: 'admin123', username: 'sy' }).then((res) => {
-//   const { code, data } = res.data.value;
-//   if (code === responseStatusCode.success) {
-//     console.log('data', data);
-//   }
-// });
-// 接口调用示例2：使用useHandleApiRes
-// const submit = async () => {
-//   const { code, data, abort } = await useHandleApiRes<ILoginRes>(
-//     Login({ password: 'admin123', username: 'sy' })
-//   );
-//   abort(); // 取消请求
-//   if (code === responseStatusCode.success) {
-//     console.log('data', data);
-//   }
-// };
+
+// 接口使用示例
+const getInfo = async () => {
+  const { abort } = getUserInfo();
+  setTimeout(() => {
+    // 取消本次请求
+    abort();
+  }, 300);
+  const { code, data, message } = await useHandleApiRes<IUserInfo>(getUserInfo());
+  console.log(code, data, message);
+};
+if (process.env.VUE_APP_MOCK_ENV) {
+  getInfo();
+}
 </script>
 
 <style lang="scss" scoped>
