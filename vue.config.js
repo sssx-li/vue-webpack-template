@@ -7,14 +7,18 @@ const IconsResolver = require('unplugin-icons/resolver');
 const { FileSystemIconLoader } = require('unplugin-icons/loaders');
 const { resolve } = require('path');
 
+const VueMacros = require('unplugin-vue-macros/webpack');
+
 module.exports = defineConfig({
   transpileDependencies: true,
   productionSourceMap: process.env.NODE_ENV !== 'production',
   publicPath: '/',
   configureWebpack: {
     plugins: [
+      VueMacros({}),
       AutoImport({
-        dts: './typing/auto.import.d.ts',
+        // dts: './typing/auto.import.d.ts',
+        dts: false,
         imports: [
           'vue',
           'vue-router',
