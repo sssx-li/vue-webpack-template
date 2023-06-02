@@ -12,5 +12,6 @@ declare module '@vue/runtime-core' {
     IconSyLogo: typeof import('~icons/sy/logo')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SvgIcon: typeof import('./../src/components/svgIcon/svgIcon.vue')['default']
   }
 }

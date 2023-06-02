@@ -5,6 +5,7 @@ const AutoComponent = require('unplugin-vue-components/webpack');
 const Icons = require('unplugin-icons/webpack');
 const IconsResolver = require('unplugin-icons/resolver');
 const { FileSystemIconLoader } = require('unplugin-icons/loaders');
+const { resolve } = require('path');
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -56,6 +57,21 @@ module.exports = defineConfig({
         additionalData: `@use "@/styles/mixins.scss" as *;`,
       },
     },
+  },
+  chainWebpack: (config) => {
+    config.resolve.alias.set('@', resolve('src'));
+    config.module.rule('svg').exclude.add(resolve('src/assets/svgs')).end();
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolve('src/assets/svgs'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]',
+      })
+      .end();
   },
   devServer: {
     proxy: {

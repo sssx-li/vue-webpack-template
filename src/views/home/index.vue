@@ -1,6 +1,7 @@
 <template>
   <div class="home-container">
     当前时间: {{ currentTime }} <br />
+    <svg-icon name="logo" />
     {{ cacheUserInfo.username }} <br />
     <icon-sy-logo style="width: 18px; height: 18px" />
     <br />
