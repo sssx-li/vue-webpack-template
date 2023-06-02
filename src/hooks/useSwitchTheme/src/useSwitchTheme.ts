@@ -1,10 +1,9 @@
 import { useCssVar } from '@vueuse/core';
-
 import { CssVarUnion, ThemeUnion } from './type';
 import { Themes } from './theme';
 import { useLocalCache } from '@/hooks/useLocalCache';
-const { setCache } = useLocalCache();
 
+const { setCache } = useLocalCache();
 export function useSwitchTheme(
   el: HTMLElement | Ref<any>,
   type: Ref<ThemeUnion> = ref('defaultTheme')
