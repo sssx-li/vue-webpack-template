@@ -1,11 +1,11 @@
 <template>
   <div class="home-container">
-    {{ userInfo.username }} <br />
+    当前时间: {{ currentTime }} <br />
+    <svg-icon name="logo" />
+    {{ cacheUserInfo.username }} <br />
     <icon-sy-logo style="width: 18px; height: 18px" />
     <br />
-    <div>用户名: {{ user.userInfo.username }}</div>
-    <br />
-    <span>{{ $filters.dateFormat(Date.now()) }}</span>
+    {{ userInfo.username }}
     <br />
     <input type="text" v-focus placeholder="指令测试" />
     <br />
@@ -23,26 +23,21 @@
 
 <script setup lang="ts">
 import { ThemeUnion, useHandleApiRes, useLocalCache, useSwitchTheme } from '@/hooks';
-import { getUserInfo } from '@/service/api';
-import { IUserInfo } from '@/service/types/user';
 import { useStore } from '@/store';
 
-interface ITheme {
+import { Login, getUserInfo } from '@/service/api';
+import { IUserInfo } from '@/service/types/user';
+
+const { userInfo } = storeToRefs(useStore().user);
+const { getCache } = useLocalCache();
+
+const currentTime = useDateFormat(useNow(), 'YYYY-MM-DD hh:mm:ss');
+const cacheUserInfo = getCache('userInfo');
+// 主题测试
+const themeOptions: {
   value: ThemeUnion;
   label: string;
-}
-
-const { user } = useStore();
-
-const { getCache, setCache } = useLocalCache();
-setCache('userInfo', {
-  username: 'sy',
-  avatar: '',
-});
-const userInfo = getCache('userInfo');
-
-// 主题测试
-const themeOptions: ITheme[] = [
+}[] = [
   { label: '默认主题', value: 'defaultTheme' },
   {
     label: '自定义主题',
@@ -58,12 +53,14 @@ nextTick(() => {
 
 // 接口使用示例
 const getInfo = async () => {
+  await Login({ username: 'sssx', password: '123456' });
   const { abort } = getUserInfo();
   setTimeout(() => {
     // 取消本次请求
     abort();
   }, 300);
   const { code, data, message } = await useHandleApiRes<IUserInfo>(getUserInfo());
+  userInfo.value = data;
   console.log(code, data, message);
 };
 if (process.env.VUE_APP_MOCK_ENV) {
