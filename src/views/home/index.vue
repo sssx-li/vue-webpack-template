@@ -70,7 +70,7 @@ if (process.env.VUE_APP_MOCK_ENV) {
 
 <style lang="scss" scoped>
 .home-container {
-  @include fvc;
+  @include flex(center, center, column);
   height: 100%;
   font: {
     size: 20px;
@@ -78,7 +78,7 @@ if (process.env.VUE_APP_MOCK_ENV) {
   }
   .theme-box {
     @include wh(180px, 40px);
-    @include fvc;
+    @include flex(center, center, column);
     border: 1px solid #ccc;
     background-color: var(--sy-primary-bg-color);
     color: var(--sy-primary-title-color);
