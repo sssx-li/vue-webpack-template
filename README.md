@@ -55,7 +55,7 @@ e.g.: git commit -m "docs: update README.md"
 
   2. 使用: icon-sy-{{svgName}}
     <!-- icon 及 sy (前缀名)均可在vue.config.js进行修改，根据个人喜好设置 -->
-    <icon-sy-logo />
+    <icon-sy-vue />
 ```
 
 #### iconify 使用及 iconify([访问地址](https://icon-sets.iconify.design/))

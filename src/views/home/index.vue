@@ -1,18 +1,18 @@
 <template>
-  <div class="home-container">
+  <div class="home-conatiner">
     当前时间: {{ currentTime }} <br />
-    <svg-icon name="logo" />
+    <el-icon :size="14">
+      <svg-icon name="logo" />
+    </el-icon>
     {{ cacheUserInfo.username }} <br />
-    <icon-sy-logo style="width: 18px; height: 18px" />
-    <br />
+    <icon-sy-vue class="sy-logo" />
     {{ userInfo.username }}
     <br />
-    <input type="text" v-focus placeholder="指令测试" />
+    <input type="text" v-focus placeholder="测试聚焦指令" class="input" />
     <br />
     <div class="theme-box" ref="el">
       <div class="text">主题测试区域</div>
     </div>
-    <br />
     <select placeholder="切换主题" v-model="activeTheme" @change="switchColor">
       <option v-for="theme in themeOptions" :key="theme.value" :value="theme.value">
         {{ theme.label }}
@@ -25,14 +25,14 @@
 import { ThemeUnion, useHandleApiRes, useLocalCache, useSwitchTheme } from '@/hooks';
 import { useStore } from '@/store';
 
-import { Login, getUserInfo } from '@/service/api';
+import { getUserInfo } from '@/service/api';
 import { IUserInfo } from '@/service/types/user';
 
 const { userInfo } = storeToRefs(useStore().user);
 const { getCache } = useLocalCache();
-
 const currentTime = useDateFormat(useNow(), 'YYYY-MM-DD hh:mm:ss');
 const cacheUserInfo = getCache('userInfo');
+
 // 主题测试
 const themeOptions: {
   value: ThemeUnion;
@@ -53,7 +53,6 @@ nextTick(() => {
 
 // 接口使用示例
 const getInfo = async () => {
-  await Login({ username: 'sssx', password: '123456' });
   const { abort } = getUserInfo();
   setTimeout(() => {
     // 取消本次请求
@@ -69,19 +68,22 @@ if (process.env.VUE_APP_MOCK_ENV) {
 </script>
 
 <style lang="scss" scoped>
-.home-container {
-  @include fvc;
-  height: 100%;
-  font: {
-    size: 20px;
-    weight: 600;
+.home-conatiner {
+  font-size: 20px;
+  .sy-logo {
+    @include wh(20px, 20px);
+    display: inline-block;
   }
-  .theme-box {
-    @include wh(180px, 40px);
-    @include fvc;
-    border: 1px solid #ccc;
-    background-color: var(--sy-primary-bg-color);
-    color: var(--sy-primary-title-color);
+  .input {
+    margin: 10px 0;
   }
+}
+.theme-box {
+  @include wh(180px, 40px);
+  @include flex(center, center, column);
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  background-color: var(--sy-primary-bg-color);
+  color: var(--sy-primary-title-color);
 }
 </style>

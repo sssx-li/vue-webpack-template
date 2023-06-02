@@ -1,9 +1,8 @@
-import router from './router';
-
 import 'normalize.css';
 import './styles/index.scss';
 import './hooks/useSwitchTheme/src/theme.scss';
 
+import router from './permission';
 import store from './store';
 import directives from './directives';
 import filters from './filters';

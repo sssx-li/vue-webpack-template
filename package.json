@@ -12,7 +12,9 @@
   "dependencies": {
     "@vueuse/core": "^9.13.0",
     "core-js": "^3.8.3",
+    "element-plus": "^2.2.33",
     "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
     "pinia": "^2.0.32",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
@@ -20,8 +22,10 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
+    "@iconify-json/ep": "^1.1.9",
     "@types/mockjs": "^1.0.7",
     "@types/node": "^18.14.6",
+    "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",

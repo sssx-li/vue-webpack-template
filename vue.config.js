@@ -5,9 +5,11 @@ const AutoComponent = require('unplugin-vue-components/webpack');
 const Icons = require('unplugin-icons/webpack');
 const IconsResolver = require('unplugin-icons/resolver');
 const { FileSystemIconLoader } = require('unplugin-icons/loaders');
-const { resolve } = require('path');
+
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers');
 
 const VueMacros = require('unplugin-vue-macros/webpack');
+const { resolve } = require('path');
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -34,6 +36,7 @@ module.exports = defineConfig({
           enabled: false,
           filepath: './.eslintrc-auto-import.json',
         },
+        resolvers: [ElementPlusResolver()],
       }),
       AutoComponent({
         // dts: './typing/.auto.components.d.ts',
@@ -41,8 +44,10 @@ module.exports = defineConfig({
         resolvers: [
           IconsResolver({
             componentPrefix: 'icon',
+            enabledCollections: ['ep'],
             customCollections: ['sy'],
           }),
+          ElementPlusResolver(),
         ],
       }),
       Icons({

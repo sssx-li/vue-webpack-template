@@ -6,7 +6,7 @@
 <script setup lang="ts">
 interface Props {
   name: string;
-  className: string;
+  className?: string;
 }
 const props = defineProps<Props>();
 
