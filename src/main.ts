@@ -9,7 +9,7 @@ import directives from './directives';
 import filters from './filters';
 
 import App from './App.vue';
-import { setupMock } from './mock';
+import { setupMock } from '../mock';
 
 (() => {
   if (process.env.VUE_APP_MOCK_ENV) {
