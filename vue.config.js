@@ -36,7 +36,8 @@ module.exports = defineConfig({
         },
       }),
       AutoComponent({
-        dts: './typing/.auto.components.d.ts',
+        // dts: './typing/.auto.components.d.ts',
+        dts: false,
         resolvers: [
           IconsResolver({
             componentPrefix: 'icon',
