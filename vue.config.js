@@ -14,7 +14,17 @@ module.exports = defineConfig({
     plugins: [
       AutoImport({
         dts: './typing/auto.import.d.ts',
-        imports: ['vue', 'vue-router', 'pinia'],
+        imports: [
+          'vue',
+          'vue-router',
+          'pinia',
+          '@vueuse/core',
+          {
+            from: 'vue-router',
+            imports: ['RouteRecordRaw'],
+            type: true,
+          },
+        ],
         eslintrc: {
           enabled: false,
           filepath: './.eslintrc-auto-import.json',

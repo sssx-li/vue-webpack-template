@@ -1,4 +1,3 @@
-import { useDateFormat } from '@vueuse/core';
 import type { MaybeComputedRef, DateLike, UseDateFormatOptions } from '@vueuse/core';
 
 export type TDateFormat = (
