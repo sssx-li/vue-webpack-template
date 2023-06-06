@@ -86,22 +86,30 @@ const handleCommand = (command: string) => {
 <style lang="scss" scoped>
 .header-container {
   @include flex(center, space-between);
+
   height: 100%;
+
   .content {
     @include flex(center, center, center);
+
     .el-icon {
-      cursor: pointer;
       margin-right: 14px;
+      cursor: pointer;
     }
   }
+
   .outline-none {
     @include flex(center, center, center);
+
     outline: none;
   }
+
   .el-image {
     @include wh(40px, 40px);
+
     border-radius: 50%;
   }
+
   .username {
     margin-left: 4px;
   }

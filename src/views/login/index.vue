@@ -81,20 +81,24 @@ const handleKeyDown = (ev: KeyboardEvent | Event) => {
 .login-container {
   @include wh(100%, 100vh);
   @include flex(center, center, column);
+
   .form-content {
     width: 450px;
     padding: 30px;
     border: 1px solid #ccc;
     border-radius: 8px;
   }
+
   .title {
-    text-align: center;
-    font-size: 30px;
     margin-bottom: 30px;
+    font-size: 30px;
+    text-align: center;
   }
+
   .flooter-btn {
     margin-top: 40px;
   }
+
   .submit-btn {
     width: 100%;
   }
@@ -105,15 +109,16 @@ const handleKeyDown = (ev: KeyboardEvent | Event) => {
 /* 解决Chrome浏览器输入框自动填充背景色 */
 input {
   display: inline-block;
-  background: transparent;
-  border: 0px;
-  border-radius: 0px;
   padding: 12px 5px 12px 15px;
-  color: #11142d;
   font-size: 16px;
+  color: #11142d;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   caret-color: #11142d;
+
   &:-webkit-autofill {
-    box-shadow: 0 0 0px 1000px #fff inset !important;
+    box-shadow: 0 0 0 1000px #fff inset !important;
     -webkit-text-fill-color: #11142d !important;
   }
 }

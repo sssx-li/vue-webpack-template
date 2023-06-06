@@ -134,8 +134,10 @@ const {
 .el-table {
   height: calc(100vh - 210px);
 }
+
 .pagination-box {
   @include flex(center, center);
+
   margin-top: 14px;
 }
 </style>

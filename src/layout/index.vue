@@ -23,8 +23,9 @@ const isCollapse = ref(false);
 <style lang="scss" scoped>
 .el-header {
   border-bottom: 1px solid #ccc;
-  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 24%);
 }
+
 .el-container {
   height: 100vh;
 }

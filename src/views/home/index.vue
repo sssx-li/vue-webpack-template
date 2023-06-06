@@ -70,20 +70,25 @@ if (process.env.VUE_APP_MOCK_ENV) {
 <style lang="scss" scoped>
 .home-conatiner {
   font-size: 20px;
+
   .sy-logo {
     @include wh(20px, 20px);
+
     display: inline-block;
   }
+
   .input {
     margin: 10px 0;
   }
 }
+
 .theme-box {
   @include wh(180px, 40px);
   @include flex(center, center, column);
+
   margin: 10px 0;
-  border: 1px solid #ccc;
-  background-color: var(--sy-primary-bg-color);
   color: var(--sy-primary-title-color);
+  background-color: var(--sy-primary-bg-color);
+  border: 1px solid #ccc;
 }
 </style>

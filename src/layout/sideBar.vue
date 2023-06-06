@@ -50,12 +50,14 @@ const defaultActive = computed(() => route.path);
 .el-menu--vertical:not(.el-menu--collapse) {
   width: 250px;
 }
+
 .el-menu {
-  border-right: none;
   height: 100%;
+  border-right: none;
+
   .icon {
-    text-align: center;
     padding: 10px;
+    text-align: center;
   }
 }
 </style>
