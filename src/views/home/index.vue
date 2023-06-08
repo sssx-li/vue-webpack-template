@@ -5,7 +5,7 @@
     {{ cacheUserInfo.username }} <br />
     <icon-sy-logo style="width: 18px; height: 18px" />
     <br />
-    {{ userInfo.username }}
+    {{ userInfo?.username }}
     <br />
     <input type="text" v-focus placeholder="指令测试" />
     <br />
