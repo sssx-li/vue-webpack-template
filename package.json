@@ -65,6 +65,7 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
+    "*.{css,scss,vue}": "pnpm run lint:style",
     "*.{js,jsx,vue,ts,tsx}": "vue-cli-service lint"
   },
   "engines": {
