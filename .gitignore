@@ -30,3 +30,5 @@ yarn-error.log*
 lerna-debug.log*
 
 auto.components.d.ts
+auto.import.d.ts
+.eslintrc-auto-import.json

@@ -17,8 +17,7 @@ module.exports = defineConfig({
     plugins: [
       VueMacros({}),
       AutoImport({
-        // dts: './typing/auto.import.d.ts',
-        dts: false,
+        dts: './typing/auto.import.d.ts',
         imports: [
           'vue',
           'vue-router',
@@ -29,9 +28,14 @@ module.exports = defineConfig({
             imports: ['RouteRecordRaw'],
             type: true,
           },
+          {
+            from: 'unplugin-vue-macros/webpack',
+            imports: ['defineOptions'],
+            type: true,
+          },
         ],
         eslintrc: {
-          enabled: false,
+          enabled: true,
           filepath: './.eslintrc-auto-import.json',
         },
       }),
