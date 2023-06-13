@@ -22,3 +22,5 @@ pnpm-debug.log*
 *.sln
 *.sw?
 auto.components.d.ts
+auto.import.d.ts
+.eslintrc-auto-import.json
