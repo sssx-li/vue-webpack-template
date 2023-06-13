@@ -63,9 +63,7 @@ const getInfo = async () => {
   userInfo.value = data;
   console.log(code, data, message);
 };
-if (process.env.VUE_APP_MOCK_ENV) {
-  getInfo();
-}
+getInfo();
 </script>
 
 <style lang="scss" scoped>
