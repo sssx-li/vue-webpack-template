@@ -12,9 +12,7 @@ import App from './App.vue';
 import { setupMock } from '../mock';
 
 (() => {
-  if (process.env.VUE_APP_MOCK_ENV) {
-    setupMock();
-  }
+  setupMock();
   const app = createApp(App);
   app.use(icons);
   app.use(store);
