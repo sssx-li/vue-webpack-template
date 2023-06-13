@@ -12,12 +12,6 @@ pnpm install
 pnpm run dev
 ```
 
-### mock 环境
-
-```
-pnpm run dev:mock
-```
-
 ### 生产环境编译打包
 
 ```
