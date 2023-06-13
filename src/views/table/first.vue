@@ -72,11 +72,12 @@
 </template>
 
 <script setup lang="ts">
+import { Table } from '@/service/api';
+import { usePage } from './usePage';
+
 defineOptions({
   name: 'tableFirst',
 });
-import { Table } from '@/service/api';
-import { usePage } from './usePage';
 
 const searchForm = reactive({
   name: '',
